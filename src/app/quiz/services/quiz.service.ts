@@ -86,7 +86,30 @@ export class QuizService {
   });
   currentScore = signal(0);
 
-  showResulte = computed(() => this.currentQuestionIndex() >= this.questions().length - 1);
+  showResulte = computed(
+    () => this.currentQuestionIndex() > this.questions().length - 1
+  );
+
+  currentAnswer = signal<string | null>(null);
+
+  chooseAnswer(answer: string) {
+    if (this.isPickAnswer()) {
+      console.log('You have already answered this question');
+      return;
+    }
+    this.currentAnswer.set(answer);
+    if (this.isCorrectAnswer()) {
+      this.increaseScore();
+    }
+  }
+
+  isCorrectAnswer(): boolean {
+    return this.currentAnswer() === this.cuurentQuestion().answer;
+  }
+
+  isPickAnswer(): boolean {
+    return this.currentAnswer() !== null;
+  }
 
   nextQuestion() {
     if (this.showResulte()) {
@@ -94,25 +117,23 @@ export class QuizService {
       return;
     }
     this.currentQuestionIndex.set(this.currentQuestionIndex() + 1);
+    this.currentAnswer.set(null);
   }
 
   increaseScore() {
     this.currentScore.set(this.currentScore() + 1);
   }
 
-  getScore(): number {  
+  getScore(): number {
     return this.currentScore();
   }
-
 
   getQuestions(): QuestionInterface[] {
     return this.questions();
   }
 
-
-    resetQuiz():void {
-        this.currentQuestionIndex.set(0);
-        this.currentScore.set(0);
-    }
-
+  resetQuiz(): void {
+    this.currentQuestionIndex.set(0);
+    this.currentScore.set(0);
+  }
 }

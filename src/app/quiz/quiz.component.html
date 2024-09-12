@@ -11,7 +11,7 @@
     {{ quizService.getQuestions().length }}
   </div>
   <quiz-question />
+  @if (quizService.isPickAnswer()) {
   <button (click)="quizService.nextQuestion()">Next Question</button>
-  }
+  } }
 </div>
-

@@ -33,3 +33,17 @@
   justify-content: center;
   align-items: center;
 }
+
+.answer.correct {
+  background-color: #28a745;
+  color: white;
+}
+
+.answer.wrong {
+  background-color: #dc3545;
+  color: white;
+}
+
+.answer.disabled {
+  cursor: not-allowed;
+}

@@ -1,9 +1,8 @@
 <div class="question">
   <div class="question__text">{{ quizService.cuurentQuestion().question }}</div>
   <div class="answers">
-    @for (item of quizService.cuurentQuestion().options; track
-    quizService.cuurentQuestion().options) {
-    <quiz-answer />
+    @for (item of quizService.cuurentQuestion().options; track $index) {
+    <quiz-answer [answerText]="item" [answerInddex]="$index"/>
     }
   </div>
 </div>
