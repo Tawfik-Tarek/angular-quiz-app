@@ -1,0 +1,23 @@
+.question {
+  margin-bottom: 1rem;
+  text-align: center;
+}
+
+.question__text {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+  background-color: blue;
+  color: white;
+  padding: 1rem;
+  border-radius: 5px;
+}
+
+.answers {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+
+  @media (max-width: 768px) {
+    grid-template-columns: 1fr;
+  }
+}
