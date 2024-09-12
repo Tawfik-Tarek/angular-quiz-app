@@ -1,9 +1,9 @@
 <div class="question">
-  <div class="question__text">This is a question</div>
+  <div class="question__text">{{ quizService.cuurentQuestion().question }}</div>
   <div class="answers">
-    <quiz-answer></quiz-answer>
-    <quiz-answer></quiz-answer>
-    <quiz-answer></quiz-answer>
-    <quiz-answer></quiz-answer>
+    @for (item of quizService.cuurentQuestion().options; track
+    quizService.cuurentQuestion().options) {
+    <quiz-answer />
+    }
   </div>
 </div>

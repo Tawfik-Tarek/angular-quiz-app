@@ -1,6 +1,17 @@
 <div class="quiz">
-    <div class="score">
-        Question 1 of 5
-    </div>
-    <quiz-question />
+  @if(quizService.showResulte()){
+  <div class="result">
+    You scored {{ quizService.getScore() }} out of
+    {{ quizService.getQuestions().length }}
+    <button (click)="quizService.resetQuiz()">Try Again</button>
+  </div>
+  } @else {
+  <div class="score">
+    Question {{ quizService.currentQuestionIndex() + 1 }} of
+    {{ quizService.getQuestions().length }}
+  </div>
+  <quiz-question />
+  <button (click)="quizService.nextQuestion()">Next Question</button>
+  }
 </div>
+

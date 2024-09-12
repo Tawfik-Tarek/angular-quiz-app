@@ -1,6 +1,7 @@
-import { Component } from "@angular/core";
+import { Component, inject } from "@angular/core";
 import QuestionComponent from "./components/question/question.component";
 import AnswerComponent from "./components/answer/answer.component";
+import { QuizService } from "./services/quiz.service";
 
 @Component({
     selector: 'app-quiz',
@@ -11,7 +12,5 @@ import AnswerComponent from "./components/answer/answer.component";
 })
 
 export class QuizComponent {
-    constructor() {
-        console.log('QuizComponent created');
-    }
+    quizService = inject(QuizService);
 }
